@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/custom-touch-samples.iml" filepath="$PROJECT_DIR$/custom-touch-samples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fragment-activity/fragment-activity.iml" filepath="$PROJECT_DIR$/fragment-activity/fragment-activity.iml" />
     </modules>
   </component>
 </project>

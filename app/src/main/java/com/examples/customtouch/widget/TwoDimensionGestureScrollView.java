@@ -217,4 +217,14 @@ public class TwoDimensionGestureScrollView extends FrameLayout {
     public boolean onTouchEvent(MotionEvent event) {
         return mDetector.onTouchEvent(event);
     }
+
+    //********************************************************************8
+    //text Fragment life cycle
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+
 }
