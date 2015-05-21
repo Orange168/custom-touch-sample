@@ -23,6 +23,7 @@ public class FragmentListArray extends Activity {
         // Create the list fragment and add it as our sole content.
         if (getFragmentManager().findFragmentById(android.R.id.content) == null) {
             ArrayListFragment list = new ArrayListFragment();
+//            ListAdapter listAdapter = new ListAdapter() ;
             getFragmentManager().beginTransaction().add(android.R.id.content, list).commit();
         }
     }
@@ -61,7 +62,11 @@ public class FragmentListArray extends Activity {
     	super.onDestroy();
     	Log.e("HJJ", "Activity &&&& onDestroy...");
     }
-    
+
+
+
+
+
        public static class ArrayListFragment extends ListFragment {
 
         public ArrayListFragment() {

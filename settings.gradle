@@ -1,1 +1,1 @@
-include ':app', ':fragment-activity'
+include ':app', ':fragment-activity', ':CustomView'
