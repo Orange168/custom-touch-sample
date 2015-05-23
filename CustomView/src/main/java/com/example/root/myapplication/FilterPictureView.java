@@ -48,5 +48,6 @@ public class FilterPictureView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        canvas.drawBitmap(bitmap,x,y,mPaint);
     }
 }
