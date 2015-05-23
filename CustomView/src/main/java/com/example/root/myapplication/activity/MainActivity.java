@@ -11,9 +11,11 @@ import android.widget.ArrayAdapter;
 
 import com.example.root.myapplication.R;
 
-
+/**
+ * http://blog.csdn.net/column/details/androidcustomview.html
+ */
 public class MainActivity extends ListActivity implements AdapterView.OnItemClickListener {
-    private  static final String ITEMS[] = { "SimpleCustomView",
+    private  static final String ITEMS[] = { "SimpleCustomView", "Filter Picture View"
 
     } ;
 
@@ -63,6 +65,8 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
             case 0:
                 startActivity(new Intent(this, FirstCustomViewActivity.class));
                 break ;
+            case 1:
+                startActivity(new Intent(this, FilterPictureActivity.class));
             default:
                 break ;
         }
