@@ -1,4 +1,4 @@
-package com.example.root.myapplication;
+package com.example.root.myapplication.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+
+import com.example.root.myapplication.view.CustomView;
+import com.example.root.myapplication.R;
 
 import java.lang.ref.WeakReference;
 

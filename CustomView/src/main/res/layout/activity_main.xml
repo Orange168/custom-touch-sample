@@ -9,7 +9,7 @@
     android:id="@+id/main_container"
     tools:context=".MainActivity">
 
-    <com.example.root.myapplication.CustomView
+    <com.example.root.myapplication.view.CustomView
         android:id="@+id/custom_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

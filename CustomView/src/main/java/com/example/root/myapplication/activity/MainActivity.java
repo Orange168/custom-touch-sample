@@ -1,21 +1,15 @@
-package com.example.root.myapplication;
+package com.example.root.myapplication.activity;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 
-import java.lang.ref.WeakReference;
+import com.example.root.myapplication.R;
 
 
 public class MainActivity extends ListActivity implements AdapterView.OnItemClickListener {

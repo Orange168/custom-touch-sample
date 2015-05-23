@@ -1,4 +1,4 @@
-package com.example.root.myapplication;
+package com.example.root.myapplication.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.example.root.myapplication.R;
 import com.example.root.myapplication.utils.MeasureUtils;
 
 /**
