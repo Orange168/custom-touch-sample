@@ -10,12 +10,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.root.myapplication.R;
+import com.example.root.myapplication.aidl.mAIDLActivity;
 
 /**
  * http://blog.csdn.net/column/details/androidcustomview.html
  */
 public class MainActivity extends ListActivity implements AdapterView.OnItemClickListener {
-    private  static final String ITEMS[] = { "SimpleCustomView", "Filter Picture View"
+    private  static final String ITEMS[] = {
+            "SimpleCustomView", "Filter Picture View",
+            "PorterDuff View","StartActivity 4 Launcher",
+            "AIDL"
 
     } ;
 
@@ -67,6 +71,16 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
                 break ;
             case 1:
                 startActivity(new Intent(this, FilterPictureActivity.class));
+                break ;
+            case 2:
+                startActivity(new Intent(this, PorterDuffActivity.class));
+                break;
+            case 3:
+                startActivity(new Intent(this, StartActivityTest.class));
+                break;
+            case 4:
+                startActivity(new Intent(this, mAIDLActivity.class));
+                break ;
             default:
                 break ;
         }

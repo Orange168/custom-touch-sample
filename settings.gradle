@@ -1,1 +1,1 @@
-include ':app', ':fragment-activity', ':CustomView', ':Thinking_In_Java'
+include ':custom-touch-examples', ':fragment-activity', ':CustomView', ':Thinking_In_Java'

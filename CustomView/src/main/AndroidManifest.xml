@@ -19,6 +19,17 @@
         </activity>
         <activity android:name=".activity.FirstCustomViewActivity"/>
         <activity android:name=".activity.FilterPictureActivity"/>
+        <activity android:name=".activity.PorterDuffActivity"/>
+        <activity
+            android:launchMode="singleTop"
+            android:name=".activity.StartActivityTest"/>
+        <activity android:name=".aidl.mAIDLActivity"/>
+        <service android:name=".aidl.ServiceAIDL" android:process=":remote">
+            <intent-filter>
+                <action android:name="android.intent.action.AIDLService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
