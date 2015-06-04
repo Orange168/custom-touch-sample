@@ -8,10 +8,16 @@ package com.examples.customtouch;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
+import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+
+import  android.os.Debug;
+
+import java.io.File;
 
 public class MainActivity extends ListActivity implements OnItemClickListener {
 
@@ -24,9 +30,14 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+        if (Environment.getExternalStorageState().equals("Environment.MEDIA_MOUNTED")){
+            File path = Environment.getExternalStorageDirectory();
+        }
+        Debug.startMethodTracing("calc");
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ITEMS);
 		getListView().setAdapter(adapter);
 		getListView().setOnItemClickListener(this);
+
 	}
 
 	@Override
@@ -58,5 +69,11 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
             default:
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Debug.stopMethodTracing();
     }
 }
