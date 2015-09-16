@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:id="@+id/main_container"
-    tools:context=".MainActivity">
+    tools:context=".activity.FirstCustomViewActivity">
 
     <com.example.root.myapplication.view.CustomView
         android:id="@+id/custom_view"

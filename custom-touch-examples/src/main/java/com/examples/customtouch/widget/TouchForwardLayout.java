@@ -8,6 +8,7 @@ package com.examples.customtouch.widget;
 import android.content.Context;
 import android.graphics.Point;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -57,7 +58,12 @@ public class TouchForwardLayout extends FrameLayout {
             mTouchOffsetPoint.y = (int)event.getY();
         }
 		//ToDo why to the process
-        //Massage the event to be offset from the first touch
+//        //Massage the event to be offset from the first touch
+        String TAG = "TouchForwardLayout";
+        Log.i(TAG, "mTouchOffsetPoint.x"+mTouchOffsetPoint.x) ;
+        Log.i(TAG, "mTouchOffsetPoint.y"+mTouchOffsetPoint.y) ;
+        Log.i(TAG,"child.w" + child.getWidth()) ;
+        Log.i(TAG,"child.h" + child.getHeight()) ;
         event.offsetLocation(-mTouchOffsetPoint.x + child.getWidth() / 2,
                 -mTouchOffsetPoint.y + child.getHeight() / 2);
 		

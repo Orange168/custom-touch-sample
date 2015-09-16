@@ -15,8 +15,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 
-import  android.os.Debug;
-
 import java.io.File;
 
 public class MainActivity extends ListActivity implements OnItemClickListener {
@@ -25,7 +23,7 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
             "Move Logger Example", "Touch Listener Example",
             "Touch Delegate Example", "Touch Forward Example",
             "Pan Example", "Pan Gesture Example",
-	        "Multi-Touch Example", "Disable Touch Intercept"};
+	        "Multi-Touch Example", "Disable Touch Intercept","CustomOverScroller"};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +64,10 @@ public class MainActivity extends ListActivity implements OnItemClickListener {
                 break;
             case 7: //Disable Touch Intercept
                 startActivity(new Intent(this, TouchInterceptActivity.class));
+                break ;
+            case 8:
+                startActivity(new Intent(this, CustomOverScrollerScrollActivity.class) );
+                break ;
             default:
                 break;
         }

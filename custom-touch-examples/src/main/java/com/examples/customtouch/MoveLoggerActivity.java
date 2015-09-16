@@ -3,6 +3,7 @@ package com.examples.customtouch;
 import android.app.Activity;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -44,12 +45,19 @@ public class MoveLoggerActivity extends Activity implements View.OnTouchListener
         } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
             switch (v.getId()) {
                 case R.id.view_logall:
+                    DisplayMetrics metrics = getResources().getDisplayMetrics();
+                    Log.i(TAG, "density=" + metrics.density + "height="+metrics.heightPixels  +
+                    "width=" + metrics.widthPixels) ;
+                    Log.i(TAG, "X= " + v.getX() +"\t\tY=" + v.getY() );
+//                    Log.i(TAG, "left = " + v.getLeft() +"\t\tright" + v.getRight() +
+//                            "\n top" + v.getTop()+ "\t\tbottom" + v.getBottom() );
                     Log.i(TAG, String.format("Top Move: %.1f,%.1f", event.getX(), event.getY()));
                     break;
                 case R.id.view_logslop:
                     if ( Math.abs(event.getX() - mInitialTouch.x) > mTouchSlop
                             || Math.abs(event.getY() - mInitialTouch.y) > mTouchSlop ) {
                         Log.i(TAG, String.format("Bottom Move: %.1f,%.1f", event.getX(), event.getY()));
+                        Log.i(TAG, String.format("Bottom Raw Move: %.1f,%.1f", event.getRawX(), event.getRawY()));
                     }
                     break;
                 default:

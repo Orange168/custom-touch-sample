@@ -15,7 +15,6 @@
             <option value="$PROJECT_DIR$/adapter-lib" />
             <option value="$PROJECT_DIR$/commonAdapter" />
             <option value="$PROJECT_DIR$/custom-touch-examples" />
-            <option value="$PROJECT_DIR$/fragment-activity" />
           </set>
         </option>
       </GradleProjectSettings>
