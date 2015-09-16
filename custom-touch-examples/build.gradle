@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
-
+def RELEASE_KEY_PASSWORD="android"
 android {
+
+
     compileSdkVersion 21
     buildToolsVersion "22.0.0"
-
     defaultConfig {
         applicationId "com.example.root.myapplication"
         minSdkVersion 15
@@ -12,12 +13,43 @@ android {
         versionName "1.0"
 
     }
+
+    signingConfigs {
+        signTest {
+            keyAlias 'Debug'
+            storeFile file('/home/orange/Documents/Note/Keystore.test.jks')
+            storePassword  "android"
+            keyPassword "android"
+
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
+            signingConfig signingConfigs.signTest
+            zipAlignEnabled true
         }
     }
+
+    productFlavors {
+        demo {
+            minSdkVersion 18
+            signingConfig signingConfigs.signTest
+            targetSdkVersion 19
+            versionName 'v.1.1'
+        }
+        full {
+            minSdkVersion 15
+            signingConfig signingConfigs.signTest
+            targetSdkVersion 20
+            versionCode 1
+            versionName 'v2.1'
+        }
+    }
+
+
 }
 
 dependencies {
