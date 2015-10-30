@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
 
 
@@ -24,11 +24,14 @@ public class CustomView extends View implements Runnable{
 
     private static final String TAG = "CustomView" ;
 
-    private int radius = 10  ;
+    private int radius = 100  ;
 
     Paint mPaint ;
     private Point mPoint ;
-    public CustomView(Context context){
+	private int measuredWidth;
+	private int measuredHeight;
+
+	public CustomView(Context context){
         this(context,null) ;
     }
 
@@ -47,11 +50,11 @@ public class CustomView extends View implements Runnable{
     private void init(){
         mPaint = new Paint() ;
         mPaint.setAntiAlias(true);
-//        mPaint.setStyle(Paint.Style.STROKE); //空心
-        mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setStyle(Paint.Style.STROKE); //空心
+//        mPaint.setStyle(Paint.Style.FILL);
 //        mPaint.setColor(Color.LTGRAY);
         mPaint.setColor(Color.argb(255, 255, 128, 103));
-//        mPaint.setStrokeWidth(10);
+        mPaint.setStrokeWidth(10);
 //
 //        ColorMatrix colorMatrix = new ColorMatrix(new float[]{
 //                1, 0, 0, 0, 0,
@@ -70,7 +73,7 @@ public class CustomView extends View implements Runnable{
         int height = getResources().getDisplayMetrics().heightPixels ;
         int width = getResources().getDisplayMetrics().widthPixels ;
         Log.e(TAG , "screenWidth=" +width + "; screenHeight=" + height);
-        canvas.drawCircle(width/2, height/2,radius,mPaint);
+        canvas.drawCircle(measuredWidth/2, measuredWidth/2,radius,mPaint);
     }
 
 
@@ -80,7 +83,33 @@ public class CustomView extends View implements Runnable{
         invalidate();
     }
 
-    @Override
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		final int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+		final int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+		measuredWidth = 260;
+		measuredHeight = 260;
+		setMeasuredDimension(measuredWidth, measuredHeight);
+
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		Log.e(TAG, "event.getX = " + event.getX());
+		Log.e(TAG, "getX = " + getX());
+		Log.e(TAG, "getY = " + getY());
+		Log.e(TAG, "getWidth == " + getWidth());
+		Log.e(TAG, "getHeight() = " + getHeight());
+		Log.e(TAG, "getPaddingBottom = " + getPaddingBottom());
+		return super.onTouchEvent(event);
+	}
+
+	@Override
+	public boolean onDragEvent(DragEvent event) {
+		return super.onDragEvent(event);
+	}
+
+	@Override
     public void run() {
         while (true) {
             try {

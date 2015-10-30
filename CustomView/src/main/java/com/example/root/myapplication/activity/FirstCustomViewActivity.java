@@ -25,7 +25,6 @@ public class FirstCustomViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         rootLayout = (LinearLayout)findViewById(R.id.main_container) ;
         mCustomView = (CustomView)findViewById(R.id.custom_view) ;
-
 //
 //        new Thread(mCustomView).start();
 //        new Thread(new Runnable() {
