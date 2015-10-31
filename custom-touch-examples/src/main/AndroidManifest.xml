@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".TwoDimensionScrollActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".CustomOverScrollerScrollActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".TwoDimensionGestureScrollActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".MultitouchActivity"

@@ -54,16 +54,16 @@ public class TwoDimensionScrollView extends FrameLayout {
      * gets measured to be as large as it wants to be.  The default implementation will
      * force some children to be only as large as this view.
      */
-    @Override
-    protected void measureChild(View child, int parentWidthMeasureSpec, int parentHeightMeasureSpec) {
-        int childWidthMeasureSpec;
-        int childHeightMeasureSpec;
-
-        childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
-        childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
-
-        child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
-    }
+//    @Override
+//    protected void measureChild(View child, int parentWidthMeasureSpec, int parentHeightMeasureSpec) {
+//        int childWidthMeasureSpec;
+//        int childHeightMeasureSpec;
+//
+//        childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+//        childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+//
+//        child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+//    }
 
     @Override
     protected void measureChildWithMargins(View child, int parentWidthMeasureSpec, int widthUsed,
@@ -80,6 +80,7 @@ public class TwoDimensionScrollView extends FrameLayout {
 	
 	@Override
 	public void computeScroll() {
+        System.out.println("==>>computeScroll");
         if (mScroller.computeScrollOffset()) {
             // This is called at drawing time by ViewGroup.  We use
             // this method to keep the fling animation going through
@@ -176,6 +177,7 @@ public class TwoDimensionScrollView extends FrameLayout {
      */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
+        System.out.println("==>>onInterceptTouchEvent");
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 //Stop any flinging in progress
@@ -218,6 +220,7 @@ public class TwoDimensionScrollView extends FrameLayout {
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        System.out.println("==>>onTouchEvent");
         mVelocityTracker.addMovement(event);
 
         switch (event.getAction()) {

@@ -5,3 +5,9 @@
 .DS_Store
 /build
 /captures
+*.iml
+.idea/
+*/build/
+custom_view_and_java.iml
+*.apk
+*.class
