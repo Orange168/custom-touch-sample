@@ -1,6 +1,6 @@
 # custom-touch-sample
 <br>
-### the custom-touch-examples module in the repository is a very good sample from learning custom touch event 
+### the custom-touch-examples module in the repository is a very good sample for learning custom touch event 
 For more info please click this : [Mastering the Android Touch System](http://wugengxin.cn/download/pdf/android/PRE_andevcon_mastering-the-android-touch-system.pdf "PRE_andevcon_mastering-the-android-touch-system.pdf")
 <br>
 ##a little understand 
