@@ -5,7 +5,6 @@
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -15,6 +14,19 @@
             <option value="$PROJECT_DIR$/adapter-lib" />
             <option value="$PROJECT_DIR$/commonAdapter" />
             <option value="$PROJECT_DIR$/custom-touch-examples" />
+            <option value="$PROJECT_DIR$/moo" />
+          </set>
+        </option>
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/CustomView" />
+            <option value="$PROJECT_DIR$/Thinking_In_Java" />
+            <option value="$PROJECT_DIR$/ViewStateSaveDemo" />
+            <option value="$PROJECT_DIR$/adapter-lib" />
+            <option value="$PROJECT_DIR$/commonAdapter" />
+            <option value="$PROJECT_DIR$/custom-touch-examples" />
+            <option value="$PROJECT_DIR$/moo" />
           </set>
         </option>
       </GradleProjectSettings>

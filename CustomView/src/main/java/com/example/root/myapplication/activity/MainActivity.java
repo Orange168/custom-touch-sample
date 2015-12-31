@@ -15,9 +15,8 @@ import com.example.root.myapplication.aidl.mAIDLActivity;
 public class MainActivity extends ListActivity implements AdapterView.OnItemClickListener {
     private  static final String ITEMS[] = {
             "SimpleCustomView", "Filter Picture View",
-            "PorterDuff View","StartActivity 4 Launcher",
-            "AIDL"
-
+            "PorterDuff View","DisInView","StartActivity 4 Launcher",
+            "AIDL","MaskFilter","ECGView","ReflectView","DreamEffectView"
     } ;
 
     @Override
@@ -41,12 +40,27 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
             case 2:
                 startActivity(new Intent(this, PorterDuffActivity.class));
                 break;
-            case 3:
-                startActivity(new Intent(this, StartActivityTest.class));
+	        case 3:
+                startActivity(new Intent(this, DisInViewActivity.class));
                 break;
             case 4:
+                startActivity(new Intent(this, StartActivityTest.class));
+                break;
+            case 5:
                 startActivity(new Intent(this, mAIDLActivity.class));
                 break ;
+	        case 6:
+		        startActivity(new Intent(this,MaskFilterActivity.class));
+		        break;
+	        case 7:
+		        startActivity(new Intent(this,ECGViewActivity.class));
+		        break;
+	        case 8:
+		        startActivity(new Intent(this,ReflectViewActivity.class));
+		        break;
+	        case 9:
+		        startActivity(new Intent(this,DreamEffectViewActivity.class));
+		        break;
             default:
                 break ;
         }

@@ -23,7 +23,10 @@ public class PorterDuffBO implements IBO {
         int dst = 0;
         for (int row = 0; row < mPoint.y; ++row) {
             for (int col = 0; col < mPoint.x; ++col) {
-                pixels[dst++] = color((float) (mPoint.y - row) / mPoint.y, (float) (mPoint.x - col) / mPoint.x, (float) (mPoint.x - col) / mPoint.x, (float) col / mPoint.x);
+	            pixels[dst++] = color(
+			            (float) (mPoint.y - row) / mPoint.y,
+			            (float) (mPoint.x - col) / mPoint.x,
+			            (float) (mPoint.x - col) / mPoint.x, (float) col / mPoint.x);
             }
         }
         Bitmap bitmap = Bitmap.createBitmap(pixels, size, size, Bitmap.Config.ARGB_8888);
@@ -35,7 +38,11 @@ public class PorterDuffBO implements IBO {
         int dst = 0;
         for (int row = 0; row < mPoint.y; ++row) {
             for (int col = 0; col < mPoint.x; ++col) {
-                pixels[dst++] = color((float) (mPoint.x - col) / mPoint.x, (float) (mPoint.y - row) / mPoint.x, (float) row / mPoint.y, (float) row / mPoint.y);
+                pixels[dst++] = color(
+		                (float) (mPoint.x - col) / mPoint.x,
+		                (float) (mPoint.y - row) / mPoint.x,
+		                (float) row / mPoint.y,
+		                (float) row / mPoint.y);
             }
         }
         Bitmap bitmap = Bitmap.createBitmap(pixels, size, size, Bitmap.Config.ARGB_8888);

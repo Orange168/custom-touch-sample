@@ -8,10 +8,13 @@
         android:targetSdkVersion="15"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:icon="@drawable/ic_launcher"
         android:label="Touch Examples"
+        android:name=".App"
         android:theme="@style/AppTheme">
+        <activity android:name="com.github.mmin18.layoutcast.ResetActivity"/>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" >

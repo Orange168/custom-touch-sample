@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/commonAdapter/commonAdapter.iml" filepath="$PROJECT_DIR$/commonAdapter/commonAdapter.iml" />
       <module fileurl="file://$PROJECT_DIR$/custom-touch-examples/custom-touch-examples.iml" filepath="$PROJECT_DIR$/custom-touch-examples/custom-touch-examples.iml" />
       <module fileurl="file://$PROJECT_DIR$/custom_view_and_java.iml" filepath="$PROJECT_DIR$/custom_view_and_java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/moo/moo.iml" filepath="$PROJECT_DIR$/moo/moo.iml" />
     </modules>
   </component>
 </project>

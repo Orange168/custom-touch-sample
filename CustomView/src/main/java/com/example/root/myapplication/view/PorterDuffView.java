@@ -32,7 +32,7 @@ public class PorterDuffView extends View {
 
     private PorterDuffXfermode porterDuffXfermode ;
 
-    private static final PorterDuff.Mode MODE = PorterDuff.Mode.ADD ;
+    private static final PorterDuff.Mode MODE = PorterDuff.Mode.DARKEN ;
 
     public PorterDuffView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -71,7 +71,7 @@ public class PorterDuffView extends View {
 
         //Calculate rectangle center coordinate
         rectX = screenW / 2 - RECT_SIZE_BIG / 2 ;
-        //Todo something don't know
+
         rectY = RECT_SIZE_SMALL + (screenH - RECT_SIZE_SMALL) / 2 - RECT_SIZE_BIG / 2 ;
     }
 

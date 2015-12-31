@@ -23,14 +23,18 @@ public class MoveLoggerActivity extends Activity implements View.OnTouchListener
     private int mTouchSlop;
     /* Initial touch point */
     private Point mInitialTouch;
+	private View view1;
+	private View slop;
 
-    @Override
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.move_logger);
 
-        findViewById(R.id.view_logall).setOnTouchListener(this);
-        findViewById(R.id.view_logslop).setOnTouchListener(this);
+		view1 = findViewById(R.id.view_logall);
+		view1.setOnTouchListener(this);
+		slop = findViewById(R.id.view_logslop);
+		slop.setOnTouchListener(this);
 
         mTouchSlop = ViewConfiguration.get(this).getScaledTouchSlop();
         mInitialTouch = new Point();
@@ -52,7 +56,8 @@ public class MoveLoggerActivity extends Activity implements View.OnTouchListener
 //                    Log.i(TAG, "left = " + v.getLeft() +"\t\tright" + v.getRight() +
 //                            "\n top" + v.getTop()+ "\t\tbottom" + v.getBottom() );
                     Log.i(TAG, String.format("Top Move: %.1f,%.1f", event.getX(), event.getY()));
-                    break;
+                    Log.i(TAG, String.format("Top View1: %s", view1.toString()));
+	                break;
                 case R.id.view_logslop:
                     if ( Math.abs(event.getX() - mInitialTouch.x) > mTouchSlop
                             || Math.abs(event.getY() - mInitialTouch.y) > mTouchSlop ) {
