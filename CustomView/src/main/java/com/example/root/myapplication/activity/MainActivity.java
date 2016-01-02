@@ -16,7 +16,8 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
     private  static final String ITEMS[] = {
             "SimpleCustomView", "Filter Picture View",
             "PorterDuff View","DisInView","StartActivity 4 Launcher",
-            "AIDL","MaskFilter","ECGView","ReflectView","DreamEffectView"
+            "AIDL","MaskFilter","ECGView","ReflectView","DreamEffectView",
+		    "ShaderView","MatrixView","AnimList"
     } ;
 
     @Override
@@ -60,6 +61,15 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
 		        break;
 	        case 9:
 		        startActivity(new Intent(this,DreamEffectViewActivity.class));
+		        break;
+	        case 10:
+		        startActivity(new Intent(this,ShaderViewActivity.class));
+		        break;
+	        case 11:
+		        startActivity(new Intent(this,MatrixViewActivity.class));
+		        break;
+	        case 12:
+		        startActivity(new Intent(this,AnimListActivity.class));
 		        break;
             default:
                 break ;

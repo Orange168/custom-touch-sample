@@ -26,6 +26,9 @@
         <activity android:name=".activity.ECGViewActivity"/>
         <activity android:name=".activity.ReflectViewActivity"/>
         <activity android:name=".activity.DreamEffectViewActivity"/>
+        <activity android:name=".activity.ShaderViewActivity"/>
+        <activity android:name=".activity.AnimListActivity"/>
+        <activity android:name=".activity.MatrixViewActivity" android:screenOrientation="landscape"/>
         <activity
             android:launchMode="singleTop"
             android:name=".activity.StartActivityTest"/>
