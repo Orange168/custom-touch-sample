@@ -22,6 +22,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.github.mmin18.layoutcast:library:1.+@aar'
+    compile 'com.android.support:support-v4:22.2.1'
 }

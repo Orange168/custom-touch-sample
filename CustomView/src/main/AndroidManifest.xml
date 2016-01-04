@@ -28,6 +28,10 @@
         <activity android:name=".activity.DreamEffectViewActivity"/>
         <activity android:name=".activity.ShaderViewActivity"/>
         <activity android:name=".activity.AnimListActivity"/>
+        <activity android:name=".activity.MultiCircleActivity"/>
+        <activity android:name=".activity.MeshActivity"
+                  android:screenOrientation="landscape"
+                  android:theme="@style/Base.ThemeOverlay.AppCompat.ActionBar"/>
         <activity android:name=".activity.MatrixViewActivity" android:screenOrientation="landscape"/>
         <activity
             android:launchMode="singleTop"
