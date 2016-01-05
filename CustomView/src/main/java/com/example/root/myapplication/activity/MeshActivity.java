@@ -16,14 +16,23 @@ import com.example.root.myapplication.activity.frag.WaveFragment;
  */
 public class MeshActivity extends Activity {
 
+	private WaveFragment mWaveFragment;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.mesh_activity);
+		mWaveFragment = new WaveFragment();
 		if (getIntent().getBooleanExtra("wave",false)) {
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-			getFragmentManager().beginTransaction().replace(R.id.frag,new WaveFragment()).commit();
-		}else {
+			getFragmentManager().beginTransaction().replace(R.id.frag, mWaveFragment).commit();
+		}else if(getIntent().getBooleanExtra("poly",false)) {
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+			Bundle bundle = new Bundle();
+			bundle.putBoolean("isPoly",true);
+			mWaveFragment.setArguments(bundle);
+			getFragmentManager().beginTransaction().replace(R.id.frag, mWaveFragment).commit();
+		}else{
 			getFragmentManager().beginTransaction().replace(R.id.frag, new MeshFragment()).commit();
 		}
 

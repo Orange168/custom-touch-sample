@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.root.myapplication.R;
+import com.example.root.myapplication.view.PolylineView;
 import com.example.root.myapplication.view.WaveView;
 
 /**
@@ -25,10 +26,17 @@ public class WaveFragment extends Fragment {
 		setHasOptionsMenu(true);
 		View view = inflater.inflate(R.layout.frag_wave, container, false);
 		layout = (LinearLayout) view.findViewById(R.id.container);
-		WaveView mWaveView = new WaveView(getActivity());
-		layout.addView(mWaveView);
+		if (getArguments().getBoolean("isPoly",false)) {
+			PolylineView polylineView = new PolylineView(getActivity());
+			layout.addView(polylineView);
+		} else {
+			WaveView mWaveView = new WaveView(getActivity());
+			layout.addView(mWaveView);
+		}
 		return view;
 	}
+
+
 
 
 }

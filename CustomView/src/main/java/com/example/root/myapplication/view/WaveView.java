@@ -23,11 +23,9 @@ public class WaveView extends View {
 
 	public WaveView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-
 		// 实例化画笔并设置参数
 		mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
 		mPaint.setColor(0xFFA2D6AE);
-
 		// 实例化路径对象
 		mPath = new Path();
 	}
@@ -37,10 +35,8 @@ public class WaveView extends View {
 		// 获取控件宽高
 		vWidth = w;
 		vHeight = h;
-
 		// 计算控制点Y坐标
 		waveY = 1 / 8F * vHeight;
-
 		// 计算端点Y坐标
 		ctrY = -1 / 16F * vHeight;
 	}
@@ -70,25 +66,18 @@ public class WaveView extends View {
 
 		canvas.drawPath(mPath, mPaint);
 
-		/*
-		 * 当控制点的x坐标大于或等于终点x坐标时更改标识值
-		 */
+		/* 当控制点的x坐标大于或等于终点x坐标时更改标识值 */
 		if (ctrX >= vWidth + 1 / 4F * vWidth) {
 			isInc = false;
 		}
-		/*
-		 * 当控制点的x坐标小于或等于起点x坐标时更改标识值
-		 */
+		/* 当控制点的x坐标小于或等于起点x坐标时更改标识值 */
 		else if (ctrX <= -1 / 4F * vWidth) {
 			isInc = true;
 		}
 
 		// 根据标识值判断当前的控制点x坐标是该加还是减
 		ctrX = isInc ? ctrX + 20 : ctrX - 20;
-
-		/*
-		 * 让“水”不断减少
-		 */
+		/* 让“水”不断减少 */
 		if (ctrY <= vHeight) {
 			ctrY += 2;
 			waveY += 2;
