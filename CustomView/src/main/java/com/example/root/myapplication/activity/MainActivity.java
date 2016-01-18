@@ -18,7 +18,7 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
             "PorterDuff View","DisInView","StartActivity 4 Launcher",
             "AIDL","MaskFilter","ECGView","ReflectView","DreamEffectView",
 		    "ShaderView","MatrixView","AnimList","MultiCircleView",
-		    "MeshActivity","WaveView","polyLineView"
+		    "MeshActivity","WaveView","polyLineView","saveAndRestore"
     } ;
 
     @Override
@@ -29,6 +29,7 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
         getListView().setOnItemClickListener(this);
 
     }
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -83,6 +84,9 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
 		        break;
 	        case 16:
 		        startActivity(new Intent(this,MeshActivity.class).putExtra("poly",true));
+		        break;
+	        case 17:
+		        startActivity(new Intent(this,MeshActivity.class).putExtra("save",true));
 		        break;
             default:
                 break ;

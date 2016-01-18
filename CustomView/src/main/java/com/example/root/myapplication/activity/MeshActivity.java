@@ -32,7 +32,13 @@ public class MeshActivity extends Activity {
 			bundle.putBoolean("isPoly",true);
 			mWaveFragment.setArguments(bundle);
 			getFragmentManager().beginTransaction().replace(R.id.frag, mWaveFragment).commit();
-		}else{
+		}else if (getIntent().getBooleanExtra("save",false)){
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+			Bundle bundle = new Bundle();
+			bundle.putBoolean("save",true);
+			mWaveFragment.setArguments(bundle);
+			getFragmentManager().beginTransaction().replace(R.id.frag, mWaveFragment).commit();
+		} else{
 			getFragmentManager().beginTransaction().replace(R.id.frag, new MeshFragment()).commit();
 		}
 
