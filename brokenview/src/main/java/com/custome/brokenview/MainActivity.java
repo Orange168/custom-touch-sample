@@ -1,4 +1,4 @@
-package com.customl.brokenview;
+package com.custome.brokenview;
 
 import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;

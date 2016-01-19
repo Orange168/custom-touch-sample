@@ -1,4 +1,4 @@
-package com.customl.brokenview;
+package com.custome.brokenview;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

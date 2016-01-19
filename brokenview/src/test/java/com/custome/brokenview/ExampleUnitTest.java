@@ -1,4 +1,4 @@
-package com.customl.brokenview;
+package com.custome.brokenview;
 
 import org.junit.Test;
 
