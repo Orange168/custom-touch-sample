@@ -91,6 +91,7 @@ public class BrokenView extends View {
                         bA.setInterpolator(new LinearInterpolator());
                         bA.setStage(BrokenAnimator.STAGE_FALLING);
                         bA.setFallingDuration();
+                        onBrokenFallingEnd(v);
                         bA.removeUpdateListener(this);
                     }
                 });
@@ -138,6 +139,6 @@ public class BrokenView extends View {
     }
 
     public void onBrokenFallingEnd(View view) {
-
+        view.setVisibility(INVISIBLE);
     }
 }

@@ -9,7 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/CustomView" />
-            <option value="$PROJECT_DIR$/Thinking_In_Java" />
             <option value="$PROJECT_DIR$/ViewStateSaveDemo" />
             <option value="$PROJECT_DIR$/adapter-lib" />
             <option value="$PROJECT_DIR$/brokenview" />
@@ -22,7 +21,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/CustomView" />
-            <option value="$PROJECT_DIR$/Thinking_In_Java" />
             <option value="$PROJECT_DIR$/ViewStateSaveDemo" />
             <option value="$PROJECT_DIR$/adapter-lib" />
             <option value="$PROJECT_DIR$/brokenview" />

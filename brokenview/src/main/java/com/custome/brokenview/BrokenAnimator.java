@@ -38,8 +38,8 @@ public class BrokenAnimator extends ValueAnimator {
     private final Bitmap mBitmap;
     private final Point mTouchPoint;
     private final BrokenConfig mConfig;
-    private boolean canReverse;
-    private boolean isPressed = false;
+    private boolean canReverse = false;
+    private boolean isPressed = true;
     private ArrayList<Path> mPathArray;
     private Path mPath;
     private PathMeasure mPathMeasure;
@@ -335,7 +335,7 @@ public class BrokenAnimator extends ValueAnimator {
                 do {
                     pmTmp.getPosTan(step, pos, null);
                     xRandom = (int) (pos[0] + Utils.nextInt(-Utils.dp2px(3), Utils.dp2px(2)));
-                    yRandom = (int) (pos[1] + Utils.nextInt(-Utils.dp2px(3), Utils.dp2px(2)));
+                    yRandom = (int) (pos[1] + Utils.nextInt(-Utils.dp2px(2), Utils.dp2px(3)));
                     itemLinePath.lineTo(xRandom, yRandom);
                     itemLinePath.addPoint(xRandom, yRandom);
                     step += Utils.dp2px(SEGMENT);
@@ -362,14 +362,14 @@ public class BrokenAnimator extends ValueAnimator {
         );
 
         int[] angleBase = new int[4];
-        angleBase[0] = (int) Math.toDegrees(Math.atan((float) r.top / r.left));
-        angleBase[1] = (int) Math.toDegrees(Math.atan(-(float) r.top / r.right));
-        angleBase[2] = (int) Math.toDegrees(Math.atan(-(float) r.bottom / r.left));
+        angleBase[0] = (int) Math.toDegrees(Math.atan(-(float) r.top / r.left));
+        angleBase[1] = (int) Math.toDegrees(Math.atan(-(float) r.top / -r.right));
+        angleBase[2] = (int) Math.toDegrees(Math.atan((float) r.bottom /- r.left));
         angleBase[3] = (int) Math.toDegrees(Math.atan((float) r.bottom / r.right));
 
-        if (baseLines[0].endPoint.x < 0)
+        if (baseLines[0].endPoint.x < 0) // 2-quadrant,3-quadrant
             angle += 180;
-        else if (baseLines[0].endPoint.x < 0 && baseLines[0].endPoint.y > 0) {
+        else if (baseLines[0].endPoint.x < 0 && baseLines[0].endPoint.y > 0) { // 4-quadrant
             angle += 360 ;// TODO: 1/19/16 ???
         }
 
@@ -401,16 +401,16 @@ public class BrokenAnimator extends ValueAnimator {
 
         switch (maxId) {
             case 0:
-                path.endPoint.set(r.left,Utils.nextInt(r.top + r.height()));
+                path.endPoint.set(r.left,r.top + Utils.nextInt( r.height()));
                 break;
             case 1:
-                path.endPoint.set(Utils.nextInt(r.width() + r.left),r.top);
+                path.endPoint.set(Utils.nextInt(r.width() ) + r.left,r.top);
                 break;
             case 2:
-                path.endPoint.set(r.right,r.top + r.height());
+                path.endPoint.set(r.right,r.top + Utils.nextInt(r.height()));
                 break;
             case 3:
-                path.endPoint.set(Utils.nextInt(r.width() + r.left),r.bottom);
+                path.endPoint.set(Utils.nextInt(r.width())  + r.left,r.bottom);
                 break;
         }
         path.line2End();
@@ -443,7 +443,8 @@ public class BrokenAnimator extends ValueAnimator {
             canvas.save();
             canvas.translate(mTouchPoint.x,mTouchPoint.y);
             for (int i = 0; i < mConfig.complexity; i++) {
-                mPaint.reset();
+                mPaint.setStyle(Paint.Style.FILL);
+                mPath.reset();
                 mPathMeasure.setPath(lineRifts[i],false);
                 float pathLength = mPathMeasure.getLength();
                 float startLength = lineRifts[i].getStartLength();

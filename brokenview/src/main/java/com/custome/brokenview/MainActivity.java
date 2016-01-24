@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private BrokenView mBrokenView;
     private Paint whitePaint;
     private BrokenViewListener brokenViewListener;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         brokenViewListener = new BrokenViewListener.Builder(mBrokenView)
                 .setPaint(whitePaint).build();
 
-        ImageView imageView = (ImageView) findViewById(R.id.image);
+        imageView = (ImageView) findViewById(R.id.image);
         imageView.setOnTouchListener(brokenViewListener);
     }
 
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.reset:
                 Toast.makeText(MainActivity.this, "reset==>>", Toast.LENGTH_SHORT).show();
+                imageView.setVisibility(View.VISIBLE);
+                imageView.setOnTouchListener(brokenViewListener);
                 mBrokenView.reset();
                 break;
         }

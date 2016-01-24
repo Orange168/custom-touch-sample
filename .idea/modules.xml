@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CustomView/CustomView.iml" filepath="$PROJECT_DIR$/CustomView/CustomView.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Thinking_In_Java/Thinking_In_Java.iml" filepath="$PROJECT_DIR$/Thinking_In_Java/Thinking_In_Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewStateSaveDemo/ViewStateSaveDemo.iml" filepath="$PROJECT_DIR$/ViewStateSaveDemo/ViewStateSaveDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/adapter-lib/adapter-lib.iml" filepath="$PROJECT_DIR$/adapter-lib/adapter-lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/brokenview/brokenview.iml" filepath="$PROJECT_DIR$/brokenview/brokenview.iml" />
