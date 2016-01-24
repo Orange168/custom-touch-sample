@@ -38,7 +38,13 @@ public class MeshActivity extends Activity {
 			bundle.putBoolean("save",true);
 			mWaveFragment.setArguments(bundle);
 			getFragmentManager().beginTransaction().replace(R.id.frag, mWaveFragment).commit();
-		} else{
+		} else if (getIntent().getBooleanExtra("path", false)) {
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+			Bundle bundle = new Bundle();
+			bundle.putBoolean("path",true);
+			mWaveFragment.setArguments(bundle);
+			getFragmentManager().beginTransaction().replace(R.id.frag, mWaveFragment).commit();
+		} else {
 			getFragmentManager().beginTransaction().replace(R.id.frag, new MeshFragment()).commit();
 		}
 

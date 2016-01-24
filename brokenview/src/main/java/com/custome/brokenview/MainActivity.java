@@ -1,8 +1,8 @@
 package com.custome.brokenview;
 
 import android.graphics.Paint;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mBrokenView = BrokenView.add2Window(this);
         whitePaint = new Paint();
+        whitePaint.setColor(0xffffffff);
         brokenViewListener = new BrokenViewListener.Builder(mBrokenView)
                 .setPaint(whitePaint).build();
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.reset:
                 Toast.makeText(MainActivity.this, "reset==>>", Toast.LENGTH_SHORT).show();
+                mBrokenView.reset();
                 break;
         }
         return super.onOptionsItemSelected(item);

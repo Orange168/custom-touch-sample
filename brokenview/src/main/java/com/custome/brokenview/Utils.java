@@ -1,7 +1,9 @@
 package com.custome.brokenview;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.View;
 
 import java.util.Random;
@@ -14,6 +16,7 @@ public class Utils {
 
     private static Canvas mCanvas;
     private static Random random = new Random();
+    private static final float DENSITY = Resources.getSystem().getDisplayMetrics().density;
     private Utils(){}
 
     public static int screenWidth ;
@@ -33,7 +36,7 @@ public class Utils {
         return bitmap;
     }
 
-    private static Bitmap createBitmapSafely(int width, int height, Bitmap.Config config, int tryCount) {
+    public static Bitmap createBitmapSafely(int width, int height, Bitmap.Config config, int tryCount) {
         while (tryCount-- > 0) {
             try {
                 return Bitmap.createBitmap(width, height, config);
@@ -47,5 +50,32 @@ public class Utils {
 
     public static int nextInt(int a) {
         return random.nextInt(a);
+    }
+
+    public static int nextInt(int a, int b) {
+        int i = 0;
+        try {
+            i = Math.min(a, b) + random.nextInt(Math.abs(a - b));
+        } catch (Exception e) {
+            Log.e("Utils", "a =" + a + ";\tb=" + b);
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    public static int dp2px(int threshold) {
+        return Math.round(threshold * DENSITY);
+    }
+
+    public static float nextFloat(int a, int b) {
+        return Math.min(a, b) + random.nextFloat() * Math.abs(a - b);
+    }
+
+    public static float nextFloat(float v) {
+        return random.nextFloat() * v;
+    }
+
+    public static boolean nextBoolean() {
+        return random.nextBoolean();
     }
 }

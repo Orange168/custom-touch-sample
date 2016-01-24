@@ -90,7 +90,7 @@ public class BrokenViewListener implements View.OnTouchListener {
                     bAnim = mBrokenView.getAnimator(v);
                     if (bAnim == null)
                         bAnim = mBrokenView.createAnimator(v,mPoint,mConfig) ;
-                    if (bAnim == null) return false; // TODO: 1/19/16 why is true in the original
+                    if (bAnim == null) return true; // TODO: 1/19/16 why is true in the original
                     if (!bAnim.isStarted()) {
                         bAnim.start();
                         mBrokenView.onBrokenStart(v) ;
@@ -102,7 +102,6 @@ public class BrokenViewListener implements View.OnTouchListener {
                     return false;
                 break;
             case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_CANCEL:
                 bAnim = mBrokenView.getAnimator(v);
                 if (bAnim != null && bAnim.isStarted()) {
                     if (bAnim.doReverse()) mBrokenView.onBrokenCancel(v);

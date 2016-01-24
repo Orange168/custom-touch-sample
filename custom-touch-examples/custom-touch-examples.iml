@@ -41,12 +41,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/demoDebug/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/demoDebug/jni" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/demoDebug/rs" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/demo/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/androidTest/demo/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/demo/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/androidTest/demo/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/androidTest/demo/debug" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/androidTest/demo/debug" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDemoDebug/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDemoDebug/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDemoDebug/assets" type="java-test-resource" />
@@ -54,6 +48,12 @@
       <sourceFolder url="file://$MODULE_DIR$/src/testDemoDebug/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDemoDebug/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDemoDebug/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/demo/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/androidTest/demo/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/demo/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/androidTest/demo/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/androidTest/demo/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/androidTest/demo/debug" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/demo/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/demo/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/demo/assets" type="java-resource" />

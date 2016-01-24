@@ -2,15 +2,18 @@ package com.custome.brokenview;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.LinearInterpolator;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -40,6 +43,7 @@ public class BrokenView extends View {
         setLayerType(LAYER_TYPE_HARDWARE,null);
         animatorMap = new HashMap<>();
         animList = new LinkedList<>();
+        enable = true;
     }
 
     public static BrokenView add2Window(Activity activity){
@@ -80,7 +84,16 @@ public class BrokenView extends View {
             public void onAnimationRepeat(Animator animation) {
                 super.onAnimationRepeat(animation);
                 BrokenAnimator bAnim = (BrokenAnimator) animation;
-
+                bAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        BrokenAnimator bA = (BrokenAnimator) animation;
+                        bA.setInterpolator(new LinearInterpolator());
+                        bA.setStage(BrokenAnimator.STAGE_FALLING);
+                        bA.setFallingDuration();
+                        bA.removeUpdateListener(this);
+                    }
+                });
             }
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -96,6 +109,24 @@ public class BrokenView extends View {
         return bAnim;
     }
 
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        for (BrokenAnimator bAnim : animList) {
+            bAnim.draw(canvas);
+        }
+    }
+
+    public void reset(){
+        for (BrokenAnimator bAnim: animList) {
+            bAnim.removeAllListeners();
+            bAnim.cancel();
+        }
+        animList.clear();
+        animatorMap.clear();
+        invalidate();
+    }
+
     public void onBrokenCancel(View v) {
     }
 
@@ -103,6 +134,10 @@ public class BrokenView extends View {
     }
 
     public void onBrokenRestart(View v) {
+
+    }
+
+    public void onBrokenFallingEnd(View view) {
 
     }
 }
