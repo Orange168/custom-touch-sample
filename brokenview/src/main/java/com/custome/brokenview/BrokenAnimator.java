@@ -71,10 +71,11 @@ public class BrokenAnimator extends ValueAnimator {
             SEGMENT = 66;
         }
         threshold = SEGMENT + SEGMENT / 2;
+        create() ;
+
         setFloatValues(0F,1F);
         setInterpolator(new AccelerateInterpolator(2.0F));
         setDuration(mConfig.breakDuration);
-        create() ;
     }
 
     private void create() {
@@ -93,6 +94,24 @@ public class BrokenAnimator extends ValueAnimator {
         buildBrokenAreas(r);
         buildPieces();
         buildPaintShader();
+        warpStraightLines();
+    }
+
+    private void warpStraightLines() {
+        PathMeasure pathMeasure = new PathMeasure();
+        for (int i = 0; i < mConfig.complexity; i++) {
+            if (lineRifts[i].isStraight) {
+                pathMeasure.setPath(lineRifts[i],false);
+                lineRifts[i].setStartLength((int) (pathMeasure.getLength() / 2));
+                float[] pos = new float[2];
+                int xRandom = (int) (pos[0] + Utils.nextInt(-Utils.dp2px(1), Utils.dp2px(1)));
+                int yRandom = (int) (pos[1] + Utils.nextInt(-Utils.dp2px(1), Utils.dp2px(1)));
+                lineRifts[i].reset();
+                lineRifts[i].moveTo(xRandom,yRandom);
+                lineRifts[i].moveTo(0,0);
+                lineRifts[i].line2End();
+            }
+        }
     }
 
     private void buildPaintShader() {
@@ -225,7 +244,9 @@ public class BrokenAnimator extends ValueAnimator {
             }else {
                 // Too short, there is no Circle-Rifts
                 Path pathArea = new Path(lineRifts[pre]);
-                drawBorder(pathArea,lineRifts[pre].endPoint,path.points.get(path.points.size() -1),r);
+                int index = path.points.size() - 1;
+                if (index < 0) continue;
+                drawBorder(pathArea,lineRifts[pre].endPoint,path.points.get(index),r);
                 for (int j=path.points.size() -2; j>=0; j--) {
                     pathArea.lineTo(path.points.get(j).x,path.points.get(j).y);
                 }
@@ -235,7 +256,79 @@ public class BrokenAnimator extends ValueAnimator {
         }
     }
 
-    private void drawBorder(Path path, Point startPoint, Point endPoint, Rect r) {
+    public void drawBorder(Path path,Point pointStart,Point pointEnd,Rect r){
+        if(pointStart.x == r.right) {
+            if(pointEnd.x == r.right)
+                path.lineTo(pointEnd.x, pointEnd.y);
+            else if(pointEnd.y == r.top) {
+                path.lineTo(r.right, r.top);
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }
+            else if(pointEnd.x == r.left){
+                path.lineTo(r.right, r.top);
+                path.lineTo(r.left, r.top);
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }else if(pointEnd.y == r.bottom){
+                path.lineTo(r.right, r.top);
+                path.lineTo(r.left, r.top);
+                path.lineTo(r.left, r.bottom);
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }
+        }
+        else if(pointStart.y == r.top) {
+            if(pointEnd.y == r.top){
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }else if(pointEnd.x == r.left){
+                path.lineTo(r.left,r.top);
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }else if(pointEnd.y == r.bottom){
+                path.lineTo(r.left,r.top);
+                path.lineTo(r.left,r.bottom);
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }else if(pointEnd.x == r.right){
+                path.lineTo(r.left,r.top);
+                path.lineTo(r.left,r.bottom);
+                path.lineTo(r.right,r.bottom);
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }
+        }
+        else if(pointStart.x == r.left) {
+            if(pointEnd.x == r.left){
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }else if(pointEnd.y == r.bottom){
+                path.lineTo(r.left,r.bottom);
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }else if(pointEnd.x == r.right){
+                path.lineTo(r.left,r.bottom);
+                path.lineTo(r.right,r.bottom);
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }else if(pointEnd.y == r.top){
+                path.lineTo(r.left,r.bottom);
+                path.lineTo(r.right,r.bottom);
+                path.lineTo(r.right,r.top);
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }
+        }
+        else if(pointStart.y == r.bottom) {
+            if(pointEnd.y == r.bottom) {
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }
+            else if(pointEnd.x == r.right){
+                path.lineTo(r.right,r.bottom);
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }else if(pointEnd.y == r.top){
+                path.lineTo(r.right,r.bottom);
+                path.lineTo(r.right,r.top);
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }else if(pointEnd.x == r.left){
+                path.lineTo(r.right,r.bottom);
+                path.lineTo(r.right,r.top);
+                path.lineTo(r.left,r.top);
+                path.lineTo(pointEnd.x, pointEnd.y);
+            }
+        }
+    }
+    private void drawBorder2(Path path, Point startPoint, Point endPoint, Rect r) {
 
         if(startPoint.x == r.right) {
             if(endPoint.x == r.right)
@@ -358,18 +451,18 @@ public class BrokenAnimator extends ValueAnimator {
 
         //First angle
         int angle = (int) Math.toDegrees(
-                Math.atan(-(float) baseLines[0].endPoint.y / baseLines[0].endPoint.x)
+                Math.atan((float)(-baseLines[0].endPoint.y) / baseLines[0].endPoint.x)
         );
 
         int[] angleBase = new int[4];
-        angleBase[0] = (int) Math.toDegrees(Math.atan(-(float) r.top / r.left));
-        angleBase[1] = (int) Math.toDegrees(Math.atan(-(float) r.top / -r.right));
-        angleBase[2] = (int) Math.toDegrees(Math.atan((float) r.bottom /- r.left));
+        angleBase[0] = (int) Math.toDegrees(Math.atan((float) (-r.top) / r.left));
+        angleBase[1] = (int) Math.toDegrees(Math.atan((float) (-r.top) /(-r.right)) );
+        angleBase[2] = (int) Math.toDegrees(Math.atan((float) r.bottom /(- r.left)));
         angleBase[3] = (int) Math.toDegrees(Math.atan((float) r.bottom / r.right));
 
         if (baseLines[0].endPoint.x < 0) // 2-quadrant,3-quadrant
             angle += 180;
-        else if (baseLines[0].endPoint.x < 0 && baseLines[0].endPoint.y > 0) { // 4-quadrant
+        else if (baseLines[0].endPoint.x > 0 && baseLines[0].endPoint.y > 0) { // 4-quadrant
             angle += 360 ;// TODO: 1/19/16 ???
         }
 
@@ -380,7 +473,7 @@ public class BrokenAnimator extends ValueAnimator {
             angle = angle + 360 / mConfig.complexity;
             if (angle >= 360) angle -= 360;
             angleRandom = angle + Utils.nextInt(-range, range);
-            angleRandom = angleRandom > 360 ? angleRandom - 360 :
+            angleRandom = angleRandom >= 360 ? angleRandom - 360 :
                     angleRandom < 0 ? angleRandom + 360 : angleRandom;
             baseLines[i].obtainEndPoint(angleRandom,angleBase,r);
             baseLines[i].line2End();

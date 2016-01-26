@@ -41,7 +41,7 @@ public class Utils {
             try {
                 return Bitmap.createBitmap(width, height, config);
             } catch (OutOfMemoryError e) {
-                e.printStackTrace();
+                Log.e("Utils", "OOM: Error" + e.toString());
                 System.gc();
             }
         }

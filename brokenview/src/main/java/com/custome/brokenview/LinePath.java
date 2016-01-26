@@ -29,12 +29,12 @@ public class LinePath extends Path {
     }
 
     public void obtainEndPoint(int angleRandom, int[] angleBase, Rect r) {
-        float gradient = -(float) Math.tan(Math.toRadians(angleRandom)); // TODO: 1/20/16 ???
+        float gradient = -(float) Math.tan(Math.toRadians(angleRandom));
         int endX = 0, endY = 0;
         if (angleRandom >= 0 && angleRandom < 90) {
             if (angleRandom < angleBase[0]) {
                 endX = r.right;
-                endY = (int) (endX * gradient);
+                endY = (int)(endX * gradient);
             } else if (angleRandom > angleBase[0]) {
                 endY = r.top;
                 endX = (int) (endY / gradient);
@@ -42,18 +42,18 @@ public class LinePath extends Path {
                 endY = r.top;
                 endX = r.right;
             }
-        }else if (angleRandom > 90 && angleRandom <= 180) {
+        } else if (angleRandom > 90 && angleRandom <= 180) {
             if (180 - angleRandom < angleBase[1]) {
                 endX = r.left;
                 endY = (int) (endX * gradient);
             } else if (180 - angleRandom > angleBase[1]) {
                 endY = r.top;
-                endX = (int) (endY * gradient);
+                endX = (int) (endY / gradient);
             } else if (180 - angleRandom == angleBase[1]) {
                 endY = r.top;
                 endX = r.left;
             }
-        }else if (angleRandom > 180 && angleRandom < 270) {
+        } else if (angleRandom > 180 && angleRandom < 270) {
             if (angleRandom - 180 < angleBase[2]) {
                 endX = r.left;
                 endY = (int) (endX * gradient);
@@ -64,7 +64,7 @@ public class LinePath extends Path {
                 endY = r.bottom;
                 endX = r.left;
             }
-        }else if (angleRandom >270 && angleRandom < 360) {
+        } else if (angleRandom > 270 && angleRandom < 360) {
             if (360 - angleRandom < angleBase[3]) {
                 endX = r.right;
                 endY = (int) (endX * gradient);
@@ -75,10 +75,12 @@ public class LinePath extends Path {
                 endY = r.bottom;
                 endX = r.right;
             }
-        } else if (angleRandom == 90) {
+        }
+        else if(angleRandom == 90) {
             endX = 0;
             endY = r.top;
-        } else if (angleRandom == 270) {
+        }
+        else if(angleRandom == 270) {
             endX = 0;
             endY = r.bottom;
         }

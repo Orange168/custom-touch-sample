@@ -69,7 +69,7 @@ public class BrokenView extends View {
 
     public BrokenAnimator getAnimator(View v) {
         BrokenAnimator animator = animatorMap.get(v);
-        if (animator != null && animator.getStage() != BrokenAnimator.STAGE_OVER) {
+        if (animator != null && animator.getStage() != BrokenAnimator.STAGE_EARLYEND) {
             return animator;
         } else
             return null;

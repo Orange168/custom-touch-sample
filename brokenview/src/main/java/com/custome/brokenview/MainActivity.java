@@ -40,10 +40,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.reset:
+                mBrokenView.reset();
                 Toast.makeText(MainActivity.this, "reset==>>", Toast.LENGTH_SHORT).show();
                 imageView.setVisibility(View.VISIBLE);
                 imageView.setOnTouchListener(brokenViewListener);
-                mBrokenView.reset();
+
                 break;
         }
         return super.onOptionsItemSelected(item);
