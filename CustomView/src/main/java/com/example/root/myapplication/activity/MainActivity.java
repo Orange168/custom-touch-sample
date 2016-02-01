@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.example.root.myapplication.activity.frag.MainDialogFrag;
 import com.example.root.myapplication.aidl.mAIDLActivity;
 
 /**
@@ -18,7 +19,8 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
             "PorterDuff View","DisInView","StartActivity 4 Launcher",
             "AIDL","MaskFilter","ECGView","ReflectView","DreamEffectView",
 		    "ShaderView","MatrixView","AnimList","MultiCircleView",
-		    "MeshActivity","WaveView","polyLineView","saveAndRestore","pathViewTest"
+		    "MeshActivity","WaveView","polyLineView","saveAndRestore","pathViewTest",
+			"ScrollerLayout"
     } ;
 
     @Override
@@ -92,7 +94,12 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
 				startActivity(new Intent(this,MeshActivity.class).putExtra("path",true));
 				break;
             default:
-                break ;
+				MainDialogFrag mDialog = new MainDialogFrag();
+				Bundle bundle = new Bundle();
+				bundle.putInt("args", position - 19);
+				mDialog.setArguments(bundle);
+				mDialog.show(getFragmentManager(), "MainDialog");
+				break ;
         }
     }
 }
