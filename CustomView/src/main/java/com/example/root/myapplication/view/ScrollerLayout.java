@@ -3,11 +3,13 @@ package com.example.root.myapplication.view;
 import android.content.Context;
 import android.support.v4.view.ViewConfigurationCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.Scroller;
+import android.widget.Toast;
 
 /**
  * Created by guolin on 16/1/12.
@@ -48,6 +50,7 @@ public class ScrollerLayout extends ViewGroup {
      * 界面可滚动的右边界
      */
     private int rightBorder;
+    private Toast toast;
 
     public ScrollerLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -56,6 +59,7 @@ public class ScrollerLayout extends ViewGroup {
         ViewConfiguration configuration = ViewConfiguration.get(context);
         // 获取TouchSlop值
         mTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(configuration);
+        toast = Toast.makeText(getContext(), "getScrollX():" + getScrollX(), Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -109,6 +113,8 @@ public class ScrollerLayout extends ViewGroup {
         switch (event.getAction()) {
             case MotionEvent.ACTION_MOVE:
                 mXMove = event.getRawX();
+                toast.setText("getScrollX():" + getScrollX());
+                toast.show();
                 int scrolledX = (int) (mXLastMove - mXMove);
                 if (getScrollX() + scrolledX < leftBorder) {
                     scrollTo(leftBorder, 0);
@@ -126,6 +132,7 @@ public class ScrollerLayout extends ViewGroup {
                 int dx = targetIndex * getWidth() - getScrollX();
                 // 第二步，调用startScroll()方法来初始化滚动数据并刷新界面
                 mScroller.startScroll(getScrollX(), 0, dx, 0);
+//                scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
                 invalidate();
                 break;
         }
@@ -137,6 +144,7 @@ public class ScrollerLayout extends ViewGroup {
         // 第三步，重写computeScroll()方法，并在其内部完成平滑滚动的逻辑
         if (mScroller.computeScrollOffset()) {
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+            Log.e("test", "getCurX=" + mScroller.getCurrX() + "\tgetCurY=" + mScroller.getCurrX());
             invalidate();
         }
     }

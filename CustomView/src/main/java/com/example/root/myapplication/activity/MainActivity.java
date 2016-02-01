@@ -10,9 +10,6 @@ import android.widget.ArrayAdapter;
 import com.example.root.myapplication.activity.frag.MainDialogFrag;
 import com.example.root.myapplication.aidl.mAIDLActivity;
 
-/**
- * http://blog.csdn.net/column/details/androidcustomview.html
- */
 public class MainActivity extends ListActivity implements AdapterView.OnItemClickListener {
     private  static final String ITEMS[] = {
             "SimpleCustomView", "Filter Picture View",
@@ -26,7 +23,7 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,ITEMS) ;
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,ITEMS) ;
         getListView().setAdapter(adapter);
         getListView().setOnItemClickListener(this);
 
