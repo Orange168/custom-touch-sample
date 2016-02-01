@@ -1,1 +1,2 @@
-include ':custom-touch-examples', ':CustomView', ':commonAdapter', ':adapter-lib', ':ViewStateSaveDemo', ':moo', ':brokenview' //, ':Thinking_In_Java'
+include ':custom-touch-examples', ':CustomView', ':adapter-lib' ':moo' //, ':Thinking_In_Java'
+include 'practice:brokenview', 'practice:ViewStateSaveDemo','practice:bcommonAdapter'
